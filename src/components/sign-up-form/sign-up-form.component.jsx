@@ -1,4 +1,3 @@
-import { reauthenticateWithCredential } from "firebase/auth";
 import { useState } from "react";
 
 import FormInput from "../form-input/form-input.component";
@@ -42,7 +41,7 @@ const SignUpForm = () => {
         password
       );
 
-      const userDocRef = await createUserDocumentFromAuth(user, {
+      await createUserDocumentFromAuth(user, {
         displayName,
       });
       resetFormFields();

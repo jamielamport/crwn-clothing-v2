@@ -2,6 +2,7 @@ import { initializeApp } from "firebase/app";
 import {
   getAuth,
   signInWithPopup,
+  signInWithEmailAndPassword,
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
 } from "firebase/auth";
@@ -17,7 +18,7 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const firebaseApp = initializeApp(firebaseConfig);
+initializeApp(firebaseConfig);
 
 const googleProvider = new GoogleAuthProvider();
 
@@ -60,6 +61,14 @@ export const createUserDocumentFromAuth = async (
   }
 
   return userDocRef;
+};
+
+export const signInAuthUserWithEmailAndPassword = async (email, password) => {
+  if (!email || !password) return;
+
+  console.log(email, password);
+
+  return signInWithEmailAndPassword(auth, email, password);
 };
 
 export const createAuthUserWithEmailAndPassword = async (email, password) => {
